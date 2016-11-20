@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.china.dao.OrderitemMapper" >
+  <resultMap id="BaseResultMap" type="com.china.entity.Orderitem" >
+    <id column="orderitemid" property="orderitemid" jdbcType="INTEGER" />
+    <result column="orderid" property="orderid" jdbcType="INTEGER" />
+    <result column="ointime" property="ointime" jdbcType="TIMESTAMP" />
+    <result column="oouttime" property="oouttime" jdbcType="TIMESTAMP" />
+    <result column="ostatus" property="ostatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    orderitemid, orderid, ointime, oouttime, ostatus
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from orderitem
+    where orderitemid = #{orderitemid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from orderitem
+    where orderitemid = #{orderitemid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china.entity.Orderitem" >
+    insert into orderitem (orderitemid, orderid, ointime, 
+      oouttime, ostatus)
+    values (#{orderitemid,jdbcType=INTEGER}, #{orderid,jdbcType=INTEGER}, #{ointime,jdbcType=TIMESTAMP}, 
+      #{oouttime,jdbcType=TIMESTAMP}, #{ostatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.china.entity.Orderitem" >
+    insert into orderitem
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderitemid != null" >
+        orderitemid,
+      </if>
+      <if test="orderid != null" >
+        orderid,
+      </if>
+      <if test="ointime != null" >
+        ointime,
+      </if>
+      <if test="oouttime != null" >
+        oouttime,
+      </if>
+      <if test="ostatus != null" >
+        ostatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderitemid != null" >
+        #{orderitemid,jdbcType=INTEGER},
+      </if>
+      <if test="orderid != null" >
+        #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="ointime != null" >
+        #{ointime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oouttime != null" >
+        #{oouttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ostatus != null" >
+        #{ostatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china.entity.Orderitem" >
+    update orderitem
+    <set >
+      <if test="orderid != null" >
+        orderid = #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="ointime != null" >
+        ointime = #{ointime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oouttime != null" >
+        oouttime = #{oouttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ostatus != null" >
+        ostatus = #{ostatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where orderitemid = #{orderitemid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china.entity.Orderitem" >
+    update orderitem
+    set orderid = #{orderid,jdbcType=INTEGER},
+      ointime = #{ointime,jdbcType=TIMESTAMP},
+      oouttime = #{oouttime,jdbcType=TIMESTAMP},
+      ostatus = #{ostatus,jdbcType=VARCHAR}
+    where orderitemid = #{orderitemid,jdbcType=INTEGER}
+  </update>
+</mapper>

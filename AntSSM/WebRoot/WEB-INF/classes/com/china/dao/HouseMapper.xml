@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.china.dao.HouseMapper" >
+  <resultMap id="BaseResultMap" type="com.china.entity.House" >
+    <id column="houseid" property="houseid" jdbcType="INTEGER" />
+    <result column="housetypeid" property="housetypeid" jdbcType="INTEGER" />
+    <result column="housetipid" property="housetipid" jdbcType="INTEGER" />
+    <result column="houselocationid" property="houselocationid" jdbcType="INTEGER" />
+    <result column="housefacilityid" property="housefacilityid" jdbcType="INTEGER" />
+    <result column="householderid" property="householderid" jdbcType="INTEGER" />
+    <result column="houseintroduceid" property="houseintroduceid" jdbcType="INTEGER" />
+    <result column="housechargeid" property="housechargeid" jdbcType="INTEGER" />
+    <result column="houseimformationid" property="houseimformationid" jdbcType="INTEGER" />
+    <result column="houseappraiseid" property="houseappraiseid" jdbcType="INTEGER" />
+    <result column="housestatus" property="housestatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    houseid, housetypeid, housetipid, houselocationid, housefacilityid, householderid, 
+    houseintroduceid, housechargeid, houseimformationid, houseappraiseid, housestatus
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from house
+    where houseid = #{houseid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from house
+    where houseid = #{houseid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china.entity.House" >
+    insert into house (houseid, housetypeid, housetipid, 
+      houselocationid, housefacilityid, householderid, 
+      houseintroduceid, housechargeid, houseimformationid, 
+      houseappraiseid, housestatus)
+    values (#{houseid,jdbcType=INTEGER}, #{housetypeid,jdbcType=INTEGER}, #{housetipid,jdbcType=INTEGER}, 
+      #{houselocationid,jdbcType=INTEGER}, #{housefacilityid,jdbcType=INTEGER}, #{householderid,jdbcType=INTEGER}, 
+      #{houseintroduceid,jdbcType=INTEGER}, #{housechargeid,jdbcType=INTEGER}, #{houseimformationid,jdbcType=INTEGER}, 
+      #{houseappraiseid,jdbcType=INTEGER}, #{housestatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.china.entity.House" >
+    insert into house
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="houseid != null" >
+        houseid,
+      </if>
+      <if test="housetypeid != null" >
+        housetypeid,
+      </if>
+      <if test="housetipid != null" >
+        housetipid,
+      </if>
+      <if test="houselocationid != null" >
+        houselocationid,
+      </if>
+      <if test="housefacilityid != null" >
+        housefacilityid,
+      </if>
+      <if test="householderid != null" >
+        householderid,
+      </if>
+      <if test="houseintroduceid != null" >
+        houseintroduceid,
+      </if>
+      <if test="housechargeid != null" >
+        housechargeid,
+      </if>
+      <if test="houseimformationid != null" >
+        houseimformationid,
+      </if>
+      <if test="houseappraiseid != null" >
+        houseappraiseid,
+      </if>
+      <if test="housestatus != null" >
+        housestatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="houseid != null" >
+        #{houseid,jdbcType=INTEGER},
+      </if>
+      <if test="housetypeid != null" >
+        #{housetypeid,jdbcType=INTEGER},
+      </if>
+      <if test="housetipid != null" >
+        #{housetipid,jdbcType=INTEGER},
+      </if>
+      <if test="houselocationid != null" >
+        #{houselocationid,jdbcType=INTEGER},
+      </if>
+      <if test="housefacilityid != null" >
+        #{housefacilityid,jdbcType=INTEGER},
+      </if>
+      <if test="householderid != null" >
+        #{householderid,jdbcType=INTEGER},
+      </if>
+      <if test="houseintroduceid != null" >
+        #{houseintroduceid,jdbcType=INTEGER},
+      </if>
+      <if test="housechargeid != null" >
+        #{housechargeid,jdbcType=INTEGER},
+      </if>
+      <if test="houseimformationid != null" >
+        #{houseimformationid,jdbcType=INTEGER},
+      </if>
+      <if test="houseappraiseid != null" >
+        #{houseappraiseid,jdbcType=INTEGER},
+      </if>
+      <if test="housestatus != null" >
+        #{housestatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china.entity.House" >
+    update house
+    <set >
+      <if test="housetypeid != null" >
+        housetypeid = #{housetypeid,jdbcType=INTEGER},
+      </if>
+      <if test="housetipid != null" >
+        housetipid = #{housetipid,jdbcType=INTEGER},
+      </if>
+      <if test="houselocationid != null" >
+        houselocationid = #{houselocationid,jdbcType=INTEGER},
+      </if>
+      <if test="housefacilityid != null" >
+        housefacilityid = #{housefacilityid,jdbcType=INTEGER},
+      </if>
+      <if test="householderid != null" >
+        householderid = #{householderid,jdbcType=INTEGER},
+      </if>
+      <if test="houseintroduceid != null" >
+        houseintroduceid = #{houseintroduceid,jdbcType=INTEGER},
+      </if>
+      <if test="housechargeid != null" >
+        housechargeid = #{housechargeid,jdbcType=INTEGER},
+      </if>
+      <if test="houseimformationid != null" >
+        houseimformationid = #{houseimformationid,jdbcType=INTEGER},
+      </if>
+      <if test="houseappraiseid != null" >
+        houseappraiseid = #{houseappraiseid,jdbcType=INTEGER},
+      </if>
+      <if test="housestatus != null" >
+        housestatus = #{housestatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where houseid = #{houseid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china.entity.House" >
+    update house
+    set housetypeid = #{housetypeid,jdbcType=INTEGER},
+      housetipid = #{housetipid,jdbcType=INTEGER},
+      houselocationid = #{houselocationid,jdbcType=INTEGER},
+      housefacilityid = #{housefacilityid,jdbcType=INTEGER},
+      householderid = #{householderid,jdbcType=INTEGER},
+      houseintroduceid = #{houseintroduceid,jdbcType=INTEGER},
+      housechargeid = #{housechargeid,jdbcType=INTEGER},
+      houseimformationid = #{houseimformationid,jdbcType=INTEGER},
+      houseappraiseid = #{houseappraiseid,jdbcType=INTEGER},
+      housestatus = #{housestatus,jdbcType=VARCHAR}
+    where houseid = #{houseid,jdbcType=INTEGER}
+  </update>
+</mapper>

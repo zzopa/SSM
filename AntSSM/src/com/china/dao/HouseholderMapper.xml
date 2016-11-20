@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.china.dao.HouseholderMapper" >
+  <resultMap id="BaseResultMap" type="com.china.entity.Householder" >
+    <id column="householderid" property="householderid" jdbcType="INTEGER" />
+    <result column="uname" property="uname" jdbcType="VARCHAR" />
+    <result column="anothername" property="anothername" jdbcType="VARCHAR" />
+    <result column="truename" property="truename" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="psw" property="psw" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    householderid, uname, anothername, truename, sex, email, tel, psw
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from householder
+    where householderid = #{householderid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from householder
+    where householderid = #{householderid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china.entity.Householder" >
+    insert into householder (householderid, uname, anothername, 
+      truename, sex, email, 
+      tel, psw)
+    values (#{householderid,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, #{anothername,jdbcType=VARCHAR}, 
+      #{truename,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{psw,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.china.entity.Householder" >
+    insert into householder
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="householderid != null" >
+        householderid,
+      </if>
+      <if test="uname != null" >
+        uname,
+      </if>
+      <if test="anothername != null" >
+        anothername,
+      </if>
+      <if test="truename != null" >
+        truename,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="psw != null" >
+        psw,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="householderid != null" >
+        #{householderid,jdbcType=INTEGER},
+      </if>
+      <if test="uname != null" >
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="anothername != null" >
+        #{anothername,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null" >
+        #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="psw != null" >
+        #{psw,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china.entity.Householder" >
+    update householder
+    <set >
+      <if test="uname != null" >
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="anothername != null" >
+        anothername = #{anothername,jdbcType=VARCHAR},
+      </if>
+      <if test="truename != null" >
+        truename = #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="psw != null" >
+        psw = #{psw,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where householderid = #{householderid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china.entity.Householder" >
+    update householder
+    set uname = #{uname,jdbcType=VARCHAR},
+      anothername = #{anothername,jdbcType=VARCHAR},
+      truename = #{truename,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      psw = #{psw,jdbcType=VARCHAR}
+    where householderid = #{householderid,jdbcType=INTEGER}
+  </update>
+</mapper>

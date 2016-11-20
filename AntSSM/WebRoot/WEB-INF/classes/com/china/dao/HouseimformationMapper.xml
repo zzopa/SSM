@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.china.dao.HouseimformationMapper" >
+  <resultMap id="BaseResultMap" type="com.china.entity.Houseimformation" >
+    <id column="houseimformationid" property="houseimformationid" jdbcType="INTEGER" />
+    <result column="housemodel" property="housemodel" jdbcType="VARCHAR" />
+    <result column="housearea" property="housearea" jdbcType="INTEGER" />
+    <result column="addbed" property="addbed" jdbcType="VARCHAR" />
+    <result column="exchangebed" property="exchangebed" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    houseimformationid, housemodel, housearea, addbed, exchangebed
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from houseimformation
+    where houseimformationid = #{houseimformationid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from houseimformation
+    where houseimformationid = #{houseimformationid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china.entity.Houseimformation" >
+    insert into houseimformation (houseimformationid, housemodel, housearea, 
+      addbed, exchangebed)
+    values (#{houseimformationid,jdbcType=INTEGER}, #{housemodel,jdbcType=VARCHAR}, #{housearea,jdbcType=INTEGER}, 
+      #{addbed,jdbcType=VARCHAR}, #{exchangebed,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.china.entity.Houseimformation" >
+    insert into houseimformation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="houseimformationid != null" >
+        houseimformationid,
+      </if>
+      <if test="housemodel != null" >
+        housemodel,
+      </if>
+      <if test="housearea != null" >
+        housearea,
+      </if>
+      <if test="addbed != null" >
+        addbed,
+      </if>
+      <if test="exchangebed != null" >
+        exchangebed,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="houseimformationid != null" >
+        #{houseimformationid,jdbcType=INTEGER},
+      </if>
+      <if test="housemodel != null" >
+        #{housemodel,jdbcType=VARCHAR},
+      </if>
+      <if test="housearea != null" >
+        #{housearea,jdbcType=INTEGER},
+      </if>
+      <if test="addbed != null" >
+        #{addbed,jdbcType=VARCHAR},
+      </if>
+      <if test="exchangebed != null" >
+        #{exchangebed,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china.entity.Houseimformation" >
+    update houseimformation
+    <set >
+      <if test="housemodel != null" >
+        housemodel = #{housemodel,jdbcType=VARCHAR},
+      </if>
+      <if test="housearea != null" >
+        housearea = #{housearea,jdbcType=INTEGER},
+      </if>
+      <if test="addbed != null" >
+        addbed = #{addbed,jdbcType=VARCHAR},
+      </if>
+      <if test="exchangebed != null" >
+        exchangebed = #{exchangebed,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where houseimformationid = #{houseimformationid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china.entity.Houseimformation" >
+    update houseimformation
+    set housemodel = #{housemodel,jdbcType=VARCHAR},
+      housearea = #{housearea,jdbcType=INTEGER},
+      addbed = #{addbed,jdbcType=VARCHAR},
+      exchangebed = #{exchangebed,jdbcType=VARCHAR}
+    where houseimformationid = #{houseimformationid,jdbcType=INTEGER}
+  </update>
+</mapper>

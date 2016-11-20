@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.china.dao.OrdertableMapper" >
+  <resultMap id="BaseResultMap" type="com.china.entity.Ordertable" >
+    <id column="orderid" property="orderid" jdbcType="INTEGER" />
+    <result column="householderid" property="householderid" jdbcType="INTEGER" />
+    <result column="odate" property="odate" jdbcType="TIMESTAMP" />
+    <result column="oprice" property="oprice" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    orderid, householderid, odate, oprice
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ordertable
+    where orderid = #{orderid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ordertable
+    where orderid = #{orderid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china.entity.Ordertable" >
+    insert into ordertable (orderid, householderid, odate, 
+      oprice)
+    values (#{orderid,jdbcType=INTEGER}, #{householderid,jdbcType=INTEGER}, #{odate,jdbcType=TIMESTAMP}, 
+      #{oprice,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.china.entity.Ordertable" >
+    insert into ordertable
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderid != null" >
+        orderid,
+      </if>
+      <if test="householderid != null" >
+        householderid,
+      </if>
+      <if test="odate != null" >
+        odate,
+      </if>
+      <if test="oprice != null" >
+        oprice,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderid != null" >
+        #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="householderid != null" >
+        #{householderid,jdbcType=INTEGER},
+      </if>
+      <if test="odate != null" >
+        #{odate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oprice != null" >
+        #{oprice,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china.entity.Ordertable" >
+    update ordertable
+    <set >
+      <if test="householderid != null" >
+        householderid = #{householderid,jdbcType=INTEGER},
+      </if>
+      <if test="odate != null" >
+        odate = #{odate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oprice != null" >
+        oprice = #{oprice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where orderid = #{orderid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china.entity.Ordertable" >
+    update ordertable
+    set householderid = #{householderid,jdbcType=INTEGER},
+      odate = #{odate,jdbcType=TIMESTAMP},
+      oprice = #{oprice,jdbcType=DECIMAL}
+    where orderid = #{orderid,jdbcType=INTEGER}
+  </update>
+</mapper>

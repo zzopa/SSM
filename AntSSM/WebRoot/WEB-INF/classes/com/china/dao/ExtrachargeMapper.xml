@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.china.dao.ExtrachargeMapper" >
+  <resultMap id="BaseResultMap" type="com.china.entity.Extracharge" >
+    <id column="echargeid" property="echargeid" jdbcType="INTEGER" />
+    <result column="houseid" property="houseid" jdbcType="INTEGER" />
+    <result column="eaddbed" property="eaddbed" jdbcType="DECIMAL" />
+    <result column="cash" property="cash" jdbcType="DECIMAL" />
+    <result column="cook" property="cook" jdbcType="VARCHAR" />
+    <result column="parkcharge" property="parkcharge" jdbcType="DECIMAL" />
+    <result column="clearcharge" property="clearcharge" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    echargeid, houseid, eaddbed, cash, cook, parkcharge, clearcharge
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from extracharge
+    where echargeid = #{echargeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from extracharge
+    where echargeid = #{echargeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china.entity.Extracharge" >
+    insert into extracharge (echargeid, houseid, eaddbed, 
+      cash, cook, parkcharge, 
+      clearcharge)
+    values (#{echargeid,jdbcType=INTEGER}, #{houseid,jdbcType=INTEGER}, #{eaddbed,jdbcType=DECIMAL}, 
+      #{cash,jdbcType=DECIMAL}, #{cook,jdbcType=VARCHAR}, #{parkcharge,jdbcType=DECIMAL}, 
+      #{clearcharge,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.china.entity.Extracharge" >
+    insert into extracharge
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="echargeid != null" >
+        echargeid,
+      </if>
+      <if test="houseid != null" >
+        houseid,
+      </if>
+      <if test="eaddbed != null" >
+        eaddbed,
+      </if>
+      <if test="cash != null" >
+        cash,
+      </if>
+      <if test="cook != null" >
+        cook,
+      </if>
+      <if test="parkcharge != null" >
+        parkcharge,
+      </if>
+      <if test="clearcharge != null" >
+        clearcharge,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="echargeid != null" >
+        #{echargeid,jdbcType=INTEGER},
+      </if>
+      <if test="houseid != null" >
+        #{houseid,jdbcType=INTEGER},
+      </if>
+      <if test="eaddbed != null" >
+        #{eaddbed,jdbcType=DECIMAL},
+      </if>
+      <if test="cash != null" >
+        #{cash,jdbcType=DECIMAL},
+      </if>
+      <if test="cook != null" >
+        #{cook,jdbcType=VARCHAR},
+      </if>
+      <if test="parkcharge != null" >
+        #{parkcharge,jdbcType=DECIMAL},
+      </if>
+      <if test="clearcharge != null" >
+        #{clearcharge,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china.entity.Extracharge" >
+    update extracharge
+    <set >
+      <if test="houseid != null" >
+        houseid = #{houseid,jdbcType=INTEGER},
+      </if>
+      <if test="eaddbed != null" >
+        eaddbed = #{eaddbed,jdbcType=DECIMAL},
+      </if>
+      <if test="cash != null" >
+        cash = #{cash,jdbcType=DECIMAL},
+      </if>
+      <if test="cook != null" >
+        cook = #{cook,jdbcType=VARCHAR},
+      </if>
+      <if test="parkcharge != null" >
+        parkcharge = #{parkcharge,jdbcType=DECIMAL},
+      </if>
+      <if test="clearcharge != null" >
+        clearcharge = #{clearcharge,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where echargeid = #{echargeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china.entity.Extracharge" >
+    update extracharge
+    set houseid = #{houseid,jdbcType=INTEGER},
+      eaddbed = #{eaddbed,jdbcType=DECIMAL},
+      cash = #{cash,jdbcType=DECIMAL},
+      cook = #{cook,jdbcType=VARCHAR},
+      parkcharge = #{parkcharge,jdbcType=DECIMAL},
+      clearcharge = #{clearcharge,jdbcType=DECIMAL}
+    where echargeid = #{echargeid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.china.dao.HousetipMapper" >
+  <resultMap id="BaseResultMap" type="com.china.entity.Housetip" >
+    <id column="housetipid" property="housetipid" jdbcType="INTEGER" />
+    <result column="worktime" property="worktime" jdbcType="VARCHAR" />
+    <result column="inhouse" property="inhouse" jdbcType="VARCHAR" />
+    <result column="outhouse" property="outhouse" jdbcType="VARCHAR" />
+    <result column="minitime" property="minitime" jdbcType="VARCHAR" />
+    <result column="faxbill" property="faxbill" jdbcType="VARCHAR" />
+    <result column="maxtime" property="maxtime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    housetipid, worktime, inhouse, outhouse, minitime, faxbill, maxtime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from housetip
+    where housetipid = #{housetipid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from housetip
+    where housetipid = #{housetipid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china.entity.Housetip" >
+    insert into housetip (housetipid, worktime, inhouse, 
+      outhouse, minitime, faxbill, 
+      maxtime)
+    values (#{housetipid,jdbcType=INTEGER}, #{worktime,jdbcType=VARCHAR}, #{inhouse,jdbcType=VARCHAR}, 
+      #{outhouse,jdbcType=VARCHAR}, #{minitime,jdbcType=VARCHAR}, #{faxbill,jdbcType=VARCHAR}, 
+      #{maxtime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.china.entity.Housetip" >
+    insert into housetip
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="housetipid != null" >
+        housetipid,
+      </if>
+      <if test="worktime != null" >
+        worktime,
+      </if>
+      <if test="inhouse != null" >
+        inhouse,
+      </if>
+      <if test="outhouse != null" >
+        outhouse,
+      </if>
+      <if test="minitime != null" >
+        minitime,
+      </if>
+      <if test="faxbill != null" >
+        faxbill,
+      </if>
+      <if test="maxtime != null" >
+        maxtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="housetipid != null" >
+        #{housetipid,jdbcType=INTEGER},
+      </if>
+      <if test="worktime != null" >
+        #{worktime,jdbcType=VARCHAR},
+      </if>
+      <if test="inhouse != null" >
+        #{inhouse,jdbcType=VARCHAR},
+      </if>
+      <if test="outhouse != null" >
+        #{outhouse,jdbcType=VARCHAR},
+      </if>
+      <if test="minitime != null" >
+        #{minitime,jdbcType=VARCHAR},
+      </if>
+      <if test="faxbill != null" >
+        #{faxbill,jdbcType=VARCHAR},
+      </if>
+      <if test="maxtime != null" >
+        #{maxtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china.entity.Housetip" >
+    update housetip
+    <set >
+      <if test="worktime != null" >
+        worktime = #{worktime,jdbcType=VARCHAR},
+      </if>
+      <if test="inhouse != null" >
+        inhouse = #{inhouse,jdbcType=VARCHAR},
+      </if>
+      <if test="outhouse != null" >
+        outhouse = #{outhouse,jdbcType=VARCHAR},
+      </if>
+      <if test="minitime != null" >
+        minitime = #{minitime,jdbcType=VARCHAR},
+      </if>
+      <if test="faxbill != null" >
+        faxbill = #{faxbill,jdbcType=VARCHAR},
+      </if>
+      <if test="maxtime != null" >
+        maxtime = #{maxtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where housetipid = #{housetipid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china.entity.Housetip" >
+    update housetip
+    set worktime = #{worktime,jdbcType=VARCHAR},
+      inhouse = #{inhouse,jdbcType=VARCHAR},
+      outhouse = #{outhouse,jdbcType=VARCHAR},
+      minitime = #{minitime,jdbcType=VARCHAR},
+      faxbill = #{faxbill,jdbcType=VARCHAR},
+      maxtime = #{maxtime,jdbcType=VARCHAR}
+    where housetipid = #{housetipid,jdbcType=INTEGER}
+  </update>
+</mapper>

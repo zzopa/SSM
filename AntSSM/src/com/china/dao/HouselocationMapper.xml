@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.china.dao.HouselocationMapper" >
+  <resultMap id="BaseResultMap" type="com.china.entity.Houselocation" >
+    <id column="houselocationid" property="houselocationid" jdbcType="INTEGER" />
+    <result column="businessid" property="businessid" jdbcType="INTEGER" />
+    <result column="cityid" property="cityid" jdbcType="INTEGER" />
+    <result column="districtid" property="districtid" jdbcType="INTEGER" />
+    <result column="provinceid" property="provinceid" jdbcType="INTEGER" />
+    <result column="detailaddress" property="detailaddress" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    houselocationid, businessid, cityid, districtid, provinceid, detailaddress
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from houselocation
+    where houselocationid = #{houselocationid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from houselocation
+    where houselocationid = #{houselocationid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china.entity.Houselocation" >
+    insert into houselocation (houselocationid, businessid, cityid, 
+      districtid, provinceid, detailaddress
+      )
+    values (#{houselocationid,jdbcType=INTEGER}, #{businessid,jdbcType=INTEGER}, #{cityid,jdbcType=INTEGER}, 
+      #{districtid,jdbcType=INTEGER}, #{provinceid,jdbcType=INTEGER}, #{detailaddress,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.china.entity.Houselocation" >
+    insert into houselocation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="houselocationid != null" >
+        houselocationid,
+      </if>
+      <if test="businessid != null" >
+        businessid,
+      </if>
+      <if test="cityid != null" >
+        cityid,
+      </if>
+      <if test="districtid != null" >
+        districtid,
+      </if>
+      <if test="provinceid != null" >
+        provinceid,
+      </if>
+      <if test="detailaddress != null" >
+        detailaddress,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="houselocationid != null" >
+        #{houselocationid,jdbcType=INTEGER},
+      </if>
+      <if test="businessid != null" >
+        #{businessid,jdbcType=INTEGER},
+      </if>
+      <if test="cityid != null" >
+        #{cityid,jdbcType=INTEGER},
+      </if>
+      <if test="districtid != null" >
+        #{districtid,jdbcType=INTEGER},
+      </if>
+      <if test="provinceid != null" >
+        #{provinceid,jdbcType=INTEGER},
+      </if>
+      <if test="detailaddress != null" >
+        #{detailaddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china.entity.Houselocation" >
+    update houselocation
+    <set >
+      <if test="businessid != null" >
+        businessid = #{businessid,jdbcType=INTEGER},
+      </if>
+      <if test="cityid != null" >
+        cityid = #{cityid,jdbcType=INTEGER},
+      </if>
+      <if test="districtid != null" >
+        districtid = #{districtid,jdbcType=INTEGER},
+      </if>
+      <if test="provinceid != null" >
+        provinceid = #{provinceid,jdbcType=INTEGER},
+      </if>
+      <if test="detailaddress != null" >
+        detailaddress = #{detailaddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where houselocationid = #{houselocationid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china.entity.Houselocation" >
+    update houselocation
+    set businessid = #{businessid,jdbcType=INTEGER},
+      cityid = #{cityid,jdbcType=INTEGER},
+      districtid = #{districtid,jdbcType=INTEGER},
+      provinceid = #{provinceid,jdbcType=INTEGER},
+      detailaddress = #{detailaddress,jdbcType=VARCHAR}
+    where houselocationid = #{houselocationid,jdbcType=INTEGER}
+  </update>
+</mapper>

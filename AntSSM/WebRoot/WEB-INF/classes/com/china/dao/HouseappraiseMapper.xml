@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.china.dao.HouseappraiseMapper" >
+  <resultMap id="BaseResultMap" type="com.china.entity.Houseappraise" >
+    <id column="houseappraiseid" property="houseappraiseid" jdbcType="INTEGER" />
+    <result column="context" property="context" jdbcType="NVARCHAR" />
+    <result column="clear" property="clear" jdbcType="INTEGER" />
+    <result column="service" property="service" jdbcType="INTEGER" />
+    <result column="costefficiency" property="costefficiency" jdbcType="INTEGER" />
+    <result column="trafic" property="trafic" jdbcType="INTEGER" />
+    <result column="environment" property="environment" jdbcType="INTEGER" />
+    <result column="appraise" property="appraise" jdbcType="NVARCHAR" />
+    <result column="reply" property="reply" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    houseappraiseid, context, clear, service, costefficiency, trafic, environment, appraise, 
+    reply
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from houseappraise
+    where houseappraiseid = #{houseappraiseid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from houseappraise
+    where houseappraiseid = #{houseappraiseid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china.entity.Houseappraise" >
+    insert into houseappraise (houseappraiseid, context, clear, 
+      service, costefficiency, trafic, 
+      environment, appraise, reply
+      )
+    values (#{houseappraiseid,jdbcType=INTEGER}, #{context,jdbcType=NVARCHAR}, #{clear,jdbcType=INTEGER}, 
+      #{service,jdbcType=INTEGER}, #{costefficiency,jdbcType=INTEGER}, #{trafic,jdbcType=INTEGER}, 
+      #{environment,jdbcType=INTEGER}, #{appraise,jdbcType=NVARCHAR}, #{reply,jdbcType=NVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.china.entity.Houseappraise" >
+    insert into houseappraise
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="houseappraiseid != null" >
+        houseappraiseid,
+      </if>
+      <if test="context != null" >
+        context,
+      </if>
+      <if test="clear != null" >
+        clear,
+      </if>
+      <if test="service != null" >
+        service,
+      </if>
+      <if test="costefficiency != null" >
+        costefficiency,
+      </if>
+      <if test="trafic != null" >
+        trafic,
+      </if>
+      <if test="environment != null" >
+        environment,
+      </if>
+      <if test="appraise != null" >
+        appraise,
+      </if>
+      <if test="reply != null" >
+        reply,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="houseappraiseid != null" >
+        #{houseappraiseid,jdbcType=INTEGER},
+      </if>
+      <if test="context != null" >
+        #{context,jdbcType=NVARCHAR},
+      </if>
+      <if test="clear != null" >
+        #{clear,jdbcType=INTEGER},
+      </if>
+      <if test="service != null" >
+        #{service,jdbcType=INTEGER},
+      </if>
+      <if test="costefficiency != null" >
+        #{costefficiency,jdbcType=INTEGER},
+      </if>
+      <if test="trafic != null" >
+        #{trafic,jdbcType=INTEGER},
+      </if>
+      <if test="environment != null" >
+        #{environment,jdbcType=INTEGER},
+      </if>
+      <if test="appraise != null" >
+        #{appraise,jdbcType=NVARCHAR},
+      </if>
+      <if test="reply != null" >
+        #{reply,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china.entity.Houseappraise" >
+    update houseappraise
+    <set >
+      <if test="context != null" >
+        context = #{context,jdbcType=NVARCHAR},
+      </if>
+      <if test="clear != null" >
+        clear = #{clear,jdbcType=INTEGER},
+      </if>
+      <if test="service != null" >
+        service = #{service,jdbcType=INTEGER},
+      </if>
+      <if test="costefficiency != null" >
+        costefficiency = #{costefficiency,jdbcType=INTEGER},
+      </if>
+      <if test="trafic != null" >
+        trafic = #{trafic,jdbcType=INTEGER},
+      </if>
+      <if test="environment != null" >
+        environment = #{environment,jdbcType=INTEGER},
+      </if>
+      <if test="appraise != null" >
+        appraise = #{appraise,jdbcType=NVARCHAR},
+      </if>
+      <if test="reply != null" >
+        reply = #{reply,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where houseappraiseid = #{houseappraiseid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china.entity.Houseappraise" >
+    update houseappraise
+    set context = #{context,jdbcType=NVARCHAR},
+      clear = #{clear,jdbcType=INTEGER},
+      service = #{service,jdbcType=INTEGER},
+      costefficiency = #{costefficiency,jdbcType=INTEGER},
+      trafic = #{trafic,jdbcType=INTEGER},
+      environment = #{environment,jdbcType=INTEGER},
+      appraise = #{appraise,jdbcType=NVARCHAR},
+      reply = #{reply,jdbcType=NVARCHAR}
+    where houseappraiseid = #{houseappraiseid,jdbcType=INTEGER}
+  </update>
+</mapper>

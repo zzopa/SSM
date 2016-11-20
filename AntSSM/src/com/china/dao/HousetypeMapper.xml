@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.china.dao.HousetypeMapper" >
+  <resultMap id="BaseResultMap" type="com.china.entity.Housetype" >
+    <id column="housetypeid" property="housetypeid" jdbcType="INTEGER" />
+    <result column="housetypename" property="housetypename" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    housetypeid, housetypename
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from housetype
+    where housetypeid = #{housetypeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from housetype
+    where housetypeid = #{housetypeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china.entity.Housetype" >
+    insert into housetype (housetypeid, housetypename)
+    values (#{housetypeid,jdbcType=INTEGER}, #{housetypename,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.china.entity.Housetype" >
+    insert into housetype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="housetypeid != null" >
+        housetypeid,
+      </if>
+      <if test="housetypename != null" >
+        housetypename,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="housetypeid != null" >
+        #{housetypeid,jdbcType=INTEGER},
+      </if>
+      <if test="housetypename != null" >
+        #{housetypename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china.entity.Housetype" >
+    update housetype
+    <set >
+      <if test="housetypename != null" >
+        housetypename = #{housetypename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where housetypeid = #{housetypeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china.entity.Housetype" >
+    update housetype
+    set housetypename = #{housetypename,jdbcType=VARCHAR}
+    where housetypeid = #{housetypeid,jdbcType=INTEGER}
+  </update>
+</mapper>

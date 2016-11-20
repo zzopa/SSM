@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.china.dao.BusinessMapper" >
+  <resultMap id="BaseResultMap" type="com.china.entity.Business" >
+    <id column="businessid" property="businessid" jdbcType="INTEGER" />
+    <result column="districtid" property="districtid" jdbcType="INTEGER" />
+    <result column="businessname" property="businessname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    businessid, districtid, businessname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from business
+    where businessid = #{businessid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from business
+    where businessid = #{businessid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china.entity.Business" >
+    insert into business (businessid, districtid, businessname
+      )
+    values (#{businessid,jdbcType=INTEGER}, #{districtid,jdbcType=INTEGER}, #{businessname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.china.entity.Business" >
+    insert into business
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="businessid != null" >
+        businessid,
+      </if>
+      <if test="districtid != null" >
+        districtid,
+      </if>
+      <if test="businessname != null" >
+        businessname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="businessid != null" >
+        #{businessid,jdbcType=INTEGER},
+      </if>
+      <if test="districtid != null" >
+        #{districtid,jdbcType=INTEGER},
+      </if>
+      <if test="businessname != null" >
+        #{businessname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china.entity.Business" >
+    update business
+    <set >
+      <if test="districtid != null" >
+        districtid = #{districtid,jdbcType=INTEGER},
+      </if>
+      <if test="businessname != null" >
+        businessname = #{businessname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where businessid = #{businessid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china.entity.Business" >
+    update business
+    set districtid = #{districtid,jdbcType=INTEGER},
+      businessname = #{businessname,jdbcType=VARCHAR}
+    where businessid = #{businessid,jdbcType=INTEGER}
+  </update>
+</mapper>

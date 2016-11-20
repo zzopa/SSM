@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.china.dao.HouseintroduceMapper" >
+  <resultMap id="BaseResultMap" type="com.china.entity.Houseintroduce" >
+    <id column="houseintroduceid" property="houseintroduceid" jdbcType="INTEGER" />
+    <result column="holderappraise" property="holderappraise" jdbcType="VARCHAR" />
+    <result column="holderlocation" property="holderlocation" jdbcType="VARCHAR" />
+    <result column="holdertraffic" property="holdertraffic" jdbcType="VARCHAR" />
+    <result column="holderaround" property="holderaround" jdbcType="VARCHAR" />
+    <result column="holderrule" property="holderrule" jdbcType="VARCHAR" />
+    <result column="others" property="others" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    houseintroduceid, holderappraise, holderlocation, holdertraffic, holderaround, holderrule, 
+    others
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from houseintroduce
+    where houseintroduceid = #{houseintroduceid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from houseintroduce
+    where houseintroduceid = #{houseintroduceid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china.entity.Houseintroduce" >
+    insert into houseintroduce (houseintroduceid, holderappraise, 
+      holderlocation, holdertraffic, holderaround, 
+      holderrule, others)
+    values (#{houseintroduceid,jdbcType=INTEGER}, #{holderappraise,jdbcType=VARCHAR}, 
+      #{holderlocation,jdbcType=VARCHAR}, #{holdertraffic,jdbcType=VARCHAR}, #{holderaround,jdbcType=VARCHAR}, 
+      #{holderrule,jdbcType=VARCHAR}, #{others,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.china.entity.Houseintroduce" >
+    insert into houseintroduce
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="houseintroduceid != null" >
+        houseintroduceid,
+      </if>
+      <if test="holderappraise != null" >
+        holderappraise,
+      </if>
+      <if test="holderlocation != null" >
+        holderlocation,
+      </if>
+      <if test="holdertraffic != null" >
+        holdertraffic,
+      </if>
+      <if test="holderaround != null" >
+        holderaround,
+      </if>
+      <if test="holderrule != null" >
+        holderrule,
+      </if>
+      <if test="others != null" >
+        others,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="houseintroduceid != null" >
+        #{houseintroduceid,jdbcType=INTEGER},
+      </if>
+      <if test="holderappraise != null" >
+        #{holderappraise,jdbcType=VARCHAR},
+      </if>
+      <if test="holderlocation != null" >
+        #{holderlocation,jdbcType=VARCHAR},
+      </if>
+      <if test="holdertraffic != null" >
+        #{holdertraffic,jdbcType=VARCHAR},
+      </if>
+      <if test="holderaround != null" >
+        #{holderaround,jdbcType=VARCHAR},
+      </if>
+      <if test="holderrule != null" >
+        #{holderrule,jdbcType=VARCHAR},
+      </if>
+      <if test="others != null" >
+        #{others,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china.entity.Houseintroduce" >
+    update houseintroduce
+    <set >
+      <if test="holderappraise != null" >
+        holderappraise = #{holderappraise,jdbcType=VARCHAR},
+      </if>
+      <if test="holderlocation != null" >
+        holderlocation = #{holderlocation,jdbcType=VARCHAR},
+      </if>
+      <if test="holdertraffic != null" >
+        holdertraffic = #{holdertraffic,jdbcType=VARCHAR},
+      </if>
+      <if test="holderaround != null" >
+        holderaround = #{holderaround,jdbcType=VARCHAR},
+      </if>
+      <if test="holderrule != null" >
+        holderrule = #{holderrule,jdbcType=VARCHAR},
+      </if>
+      <if test="others != null" >
+        others = #{others,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where houseintroduceid = #{houseintroduceid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china.entity.Houseintroduce" >
+    update houseintroduce
+    set holderappraise = #{holderappraise,jdbcType=VARCHAR},
+      holderlocation = #{holderlocation,jdbcType=VARCHAR},
+      holdertraffic = #{holdertraffic,jdbcType=VARCHAR},
+      holderaround = #{holderaround,jdbcType=VARCHAR},
+      holderrule = #{holderrule,jdbcType=VARCHAR},
+      others = #{others,jdbcType=VARCHAR}
+    where houseintroduceid = #{houseintroduceid,jdbcType=INTEGER}
+  </update>
+</mapper>

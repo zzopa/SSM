@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.china.dao.DistrictMapper" >
+  <resultMap id="BaseResultMap" type="com.china.entity.District" >
+    <id column="districtid" property="districtid" jdbcType="INTEGER" />
+    <result column="cityid" property="cityid" jdbcType="INTEGER" />
+    <result column="districtname" property="districtname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    districtid, cityid, districtname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from district
+    where districtid = #{districtid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from district
+    where districtid = #{districtid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china.entity.District" >
+    insert into district (districtid, cityid, districtname
+      )
+    values (#{districtid,jdbcType=INTEGER}, #{cityid,jdbcType=INTEGER}, #{districtname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.china.entity.District" >
+    insert into district
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="districtid != null" >
+        districtid,
+      </if>
+      <if test="cityid != null" >
+        cityid,
+      </if>
+      <if test="districtname != null" >
+        districtname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="districtid != null" >
+        #{districtid,jdbcType=INTEGER},
+      </if>
+      <if test="cityid != null" >
+        #{cityid,jdbcType=INTEGER},
+      </if>
+      <if test="districtname != null" >
+        #{districtname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china.entity.District" >
+    update district
+    <set >
+      <if test="cityid != null" >
+        cityid = #{cityid,jdbcType=INTEGER},
+      </if>
+      <if test="districtname != null" >
+        districtname = #{districtname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where districtid = #{districtid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china.entity.District" >
+    update district
+    set cityid = #{cityid,jdbcType=INTEGER},
+      districtname = #{districtname,jdbcType=VARCHAR}
+    where districtid = #{districtid,jdbcType=INTEGER}
+  </update>
+</mapper>

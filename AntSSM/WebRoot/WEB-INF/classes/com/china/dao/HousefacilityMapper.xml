@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.china.dao.HousefacilityMapper" >
+  <resultMap id="BaseResultMap" type="com.china.entity.Housefacility" >
+    <id column="housefacilityid" property="housefacilityid" jdbcType="INTEGER" />
+    <result column="wifi" property="wifi" jdbcType="VARCHAR" />
+    <result column="lift" property="lift" jdbcType="VARCHAR" />
+    <result column="icebox" property="icebox" jdbcType="VARCHAR" />
+    <result column="washer" property="washer" jdbcType="VARCHAR" />
+    <result column="tv" property="tv" jdbcType="VARCHAR" />
+    <result column="pc" property="pc" jdbcType="VARCHAR" />
+    <result column="shower" property="shower" jdbcType="VARCHAR" />
+    <result column="park" property="park" jdbcType="VARCHAR" />
+    <result column="allowold" property="allowold" jdbcType="VARCHAR" />
+    <result column="allowchild" property="allowchild" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    housefacilityid, wifi, lift, icebox, washer, tv, pc, shower, park, allowold, allowchild
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from housefacility
+    where housefacilityid = #{housefacilityid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from housefacility
+    where housefacilityid = #{housefacilityid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.china.entity.Housefacility" >
+    insert into housefacility (housefacilityid, wifi, lift, 
+      icebox, washer, tv, 
+      pc, shower, park, allowold, 
+      allowchild)
+    values (#{housefacilityid,jdbcType=INTEGER}, #{wifi,jdbcType=VARCHAR}, #{lift,jdbcType=VARCHAR}, 
+      #{icebox,jdbcType=VARCHAR}, #{washer,jdbcType=VARCHAR}, #{tv,jdbcType=VARCHAR}, 
+      #{pc,jdbcType=VARCHAR}, #{shower,jdbcType=VARCHAR}, #{park,jdbcType=VARCHAR}, #{allowold,jdbcType=VARCHAR}, 
+      #{allowchild,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.china.entity.Housefacility" >
+    insert into housefacility
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="housefacilityid != null" >
+        housefacilityid,
+      </if>
+      <if test="wifi != null" >
+        wifi,
+      </if>
+      <if test="lift != null" >
+        lift,
+      </if>
+      <if test="icebox != null" >
+        icebox,
+      </if>
+      <if test="washer != null" >
+        washer,
+      </if>
+      <if test="tv != null" >
+        tv,
+      </if>
+      <if test="pc != null" >
+        pc,
+      </if>
+      <if test="shower != null" >
+        shower,
+      </if>
+      <if test="park != null" >
+        park,
+      </if>
+      <if test="allowold != null" >
+        allowold,
+      </if>
+      <if test="allowchild != null" >
+        allowchild,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="housefacilityid != null" >
+        #{housefacilityid,jdbcType=INTEGER},
+      </if>
+      <if test="wifi != null" >
+        #{wifi,jdbcType=VARCHAR},
+      </if>
+      <if test="lift != null" >
+        #{lift,jdbcType=VARCHAR},
+      </if>
+      <if test="icebox != null" >
+        #{icebox,jdbcType=VARCHAR},
+      </if>
+      <if test="washer != null" >
+        #{washer,jdbcType=VARCHAR},
+      </if>
+      <if test="tv != null" >
+        #{tv,jdbcType=VARCHAR},
+      </if>
+      <if test="pc != null" >
+        #{pc,jdbcType=VARCHAR},
+      </if>
+      <if test="shower != null" >
+        #{shower,jdbcType=VARCHAR},
+      </if>
+      <if test="park != null" >
+        #{park,jdbcType=VARCHAR},
+      </if>
+      <if test="allowold != null" >
+        #{allowold,jdbcType=VARCHAR},
+      </if>
+      <if test="allowchild != null" >
+        #{allowchild,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.china.entity.Housefacility" >
+    update housefacility
+    <set >
+      <if test="wifi != null" >
+        wifi = #{wifi,jdbcType=VARCHAR},
+      </if>
+      <if test="lift != null" >
+        lift = #{lift,jdbcType=VARCHAR},
+      </if>
+      <if test="icebox != null" >
+        icebox = #{icebox,jdbcType=VARCHAR},
+      </if>
+      <if test="washer != null" >
+        washer = #{washer,jdbcType=VARCHAR},
+      </if>
+      <if test="tv != null" >
+        tv = #{tv,jdbcType=VARCHAR},
+      </if>
+      <if test="pc != null" >
+        pc = #{pc,jdbcType=VARCHAR},
+      </if>
+      <if test="shower != null" >
+        shower = #{shower,jdbcType=VARCHAR},
+      </if>
+      <if test="park != null" >
+        park = #{park,jdbcType=VARCHAR},
+      </if>
+      <if test="allowold != null" >
+        allowold = #{allowold,jdbcType=VARCHAR},
+      </if>
+      <if test="allowchild != null" >
+        allowchild = #{allowchild,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where housefacilityid = #{housefacilityid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.china.entity.Housefacility" >
+    update housefacility
+    set wifi = #{wifi,jdbcType=VARCHAR},
+      lift = #{lift,jdbcType=VARCHAR},
+      icebox = #{icebox,jdbcType=VARCHAR},
+      washer = #{washer,jdbcType=VARCHAR},
+      tv = #{tv,jdbcType=VARCHAR},
+      pc = #{pc,jdbcType=VARCHAR},
+      shower = #{shower,jdbcType=VARCHAR},
+      park = #{park,jdbcType=VARCHAR},
+      allowold = #{allowold,jdbcType=VARCHAR},
+      allowchild = #{allowchild,jdbcType=VARCHAR}
+    where housefacilityid = #{housefacilityid,jdbcType=INTEGER}
+  </update>
+</mapper>

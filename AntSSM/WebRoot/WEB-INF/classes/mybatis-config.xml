@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- 允许JDBC支持生成的键 -->
+		<setting name="useGeneratedKeys" value="true" />
+	</settings>
+	<typeAliases>
+		<!-- 配置数据类型的别名 -->
+		<typeAlias type="com.china.entity.Business" alias="Business" />
+		<typeAlias type="com.china.entity.City" alias="City" />
+		<typeAlias type="com.china.entity.District" alias="District" />
+		<typeAlias type="com.china.entity.Extracharge" alias="Extracharge" />
+		<typeAlias type="com.china.entity.House" alias="House" />
+		<typeAlias type="com.china.entity.Houseappraise" alias="Houseappraise" />
+		<typeAlias type="com.china.entity.Housecharge" alias="Housecharge" />
+		<typeAlias type="com.china.entity.Housefacility" alias="Housefacility" />
+		<typeAlias type="com.china.entity.Householder" alias="Householder" />
+		<typeAlias type="com.china.entity.Houseimformation" alias="Houseimformation" />
+		<typeAlias type="com.china.entity.Houseintroduce" alias="Houseintroduce" />
+		<typeAlias type="com.china.entity.Houselocation" alias="Houselocation" />
+		<typeAlias type="com.china.entity.Housetip" alias="Housetip" />
+		<typeAlias type="com.china.entity.Housetype" alias="Housetype" />
+		<typeAlias type="com.china.entity.Image" alias="Image" />
+		<typeAlias type="com.china.entity.Orderitem" alias="Orderitem" />
+		<typeAlias type="com.china.entity.Ordertable" alias="Ordertable" />
+		<typeAlias type="com.china.entity.Province" alias="Province" />
+		
+	</typeAliases>
+	<!-- 默认的环境ID -->
+	<environments default="development">
+		<!-- 每个environment元素定义的环境ID -->
+		<environment id="development">
+			<!-- 事务处理方式 -->
+			<transactionManager type="JDBC" />
+			<!-- 数据源配置 -->
+			<dataSource type="POOLED">
+				<!-- 数据库JDBC驱动 -->
+				<property name="driver"
+					value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+
+				<!-- 数据库URL -->
+				<property name="url"
+					value="jdbc:sqlserver://localhost:1433;databaseName=antrent" />
+				<!-- 数据库用户 -->
+				<property name="username" value="sa" />
+				<!-- 密码 -->
+				<property name="password" value="sasa" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<!-- 配置映射文件 resource="com/pxy/mapper/BlogMapper.xml" -->
+		<mapper resource="com/china/dao/BusinessMapper.xml"/>
+		<mapper resource="com/china/dao/CityMapper.xml"/>
+		<mapper resource="com/china/dao/DistrictMapper.xml"/>
+		<mapper resource="com/china/dao/ExtrachargeMapper.xml"/>
+		<mapper resource="com/china/dao/HouseappraiseMapper.xml"/>
+		<mapper resource="com/china/dao/HousechargeMapper.xml"/>
+		<mapper resource="com/china/dao/HousefacilityMapper.xml"/>
+		<mapper resource="com/china/dao/HouseholderMapper.xml"/>
+		<mapper resource="com/china/dao/HouseimformationMapper.xml"/>
+		<mapper resource="com/china/dao/HouseintroduceMapper.xml"/>
+		<mapper resource="com/china/dao/HouselocationMapper.xml"/>
+		<mapper resource="com/china/dao/HouseMapper.xml"/>
+		<mapper resource="com/china/dao/HousetipMapper.xml"/>
+		<mapper resource="com/china/dao/HousetypeMapper.xml"/>
+		<mapper resource="com/china/dao/ImageMapper.xml"/>
+		<mapper resource="com/china/dao/OrderitemMapper.xml"/>
+		<mapper resource="com/china/dao/OrdertableMapper.xml"/>
+		<mapper resource="com/china/dao/ProvinceMapper.xml"/>
+		
+	</mappers>
+</configuration>
